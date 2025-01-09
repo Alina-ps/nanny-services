@@ -1,0 +1,105 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100hv;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.textSection {
+  background-color: var(--red);
+  color: var(--white);
+  display: grid;
+  place-items: start;
+  padding: 251px 64px 163px 96px;
+}
+
+.heading {
+  margin-bottom: 28px;
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 70px;
+}
+
+.subheading {
+  margin-bottom: 64px;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 30px;
+}
+
+.button {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  padding: 18px 50px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--white);
+  /*to get 40% opacity in HEX, I multiplied 0.4 by 255 (maximum value in decimal for opacity), got 102. 
+  Then converted 102 to hexidecimal, received 66. */
+  border: 1px solid #fbfbfb66;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.iconArrow {
+  margin-left: 18px;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .iconArrow {
+  transform: rotate(52deg);
+}
+
+.imageSection {
+  background-image: url(../../assets/main-photo-1x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+
+.experience {
+  background-color: var(--white);
+  padding: 32px;
+  border-radius: 10px;
+  text-align: center;
+  display: grid;
+  align-self: end;
+  justify-self: end;
+  margin: 0 50px 50px 0;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  justify-items: start;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 6px;
+}
+
+.iconCheck {
+  background-color: var(--red);
+  border-radius: 13px;
+  padding: 19.5px 17px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.experienceText {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.09px;
+  color: #11101c80; /* opacity 50% in HEX 80 */
+}
+
+.count {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29.3px;
+}
