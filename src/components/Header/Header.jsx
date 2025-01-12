@@ -2,11 +2,22 @@ import { Link, NavLink } from 'react-router-dom';
 import s from './Header.module.css';
 import clsx from 'clsx';
 import sprite from '../../assets/icons.svg';
+import LoginForm from '../LoginForm/LoginForm';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../redux/modal/slice.js';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.link, isActive && s.active);
   };
+
+  const handleRegisterClick = () => {
+    dispatch(openModal());
+  };
+
   return (
     <div className={s.header}>
       <Link to="/" className={s.logo}>
@@ -29,10 +40,16 @@ const Header = () => {
         <Link to="/login" className={s.actionLogin}>
           Log In
         </Link>
-        <Link to="/register" className={s.actionRegister}>
+        <button
+          type="button"
+          className={s.actionRegister}
+          onClick={handleRegisterClick}
+        >
           Registration
-        </Link>
+        </button>
       </div>
+      <LoginForm />
+      <RegistrationForm />
     </div>
   );
 };
