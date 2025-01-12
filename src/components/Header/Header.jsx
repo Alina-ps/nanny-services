@@ -4,18 +4,28 @@ import clsx from 'clsx';
 import sprite from '../../assets/icons.svg';
 import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../redux/modal/slice.js';
+import {
+  selectModalState,
+  selectModalType,
+} from '../../redux/modal/selectors.js';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const isOpen = useSelector(selectModalState);
+  const type = useSelector(selectModalType);
 
   const buildLinkClass = ({ isActive }) => {
     return clsx(s.link, isActive && s.active);
   };
 
+  const handleLoginClick = () => {
+    dispatch(openModal('login'));
+  };
+
   const handleRegisterClick = () => {
-    dispatch(openModal());
+    dispatch(openModal('register'));
   };
 
   return (
@@ -37,9 +47,14 @@ const Header = () => {
         </NavLink> */}
       </div>
       <div className={s.actions}>
-        <Link to="/login" className={s.actionLogin}>
+        <button
+          type="button"
+          className={s.actionLogin}
+          onClick={handleLoginClick}
+        >
           Log In
-        </Link>
+        </button>
+
         <button
           type="button"
           className={s.actionRegister}
@@ -48,8 +63,12 @@ const Header = () => {
           Registration
         </button>
       </div>
-      <LoginForm />
-      <RegistrationForm />
+      {isOpen && (
+        <>
+          {type === 'login' && <LoginForm />}
+          {type === 'register' && <RegistrationForm />}
+        </>
+      )}
     </div>
   );
 };
