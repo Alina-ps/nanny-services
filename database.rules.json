@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "nannies": {
+      ".read": "true",
+      ".write": "true"
+    }
+  }
+}
