@@ -3,6 +3,9 @@ import { fetchAllNannies } from './operations';
 
 const initialState = {
   items: [],
+  total: 28,
+  page: 1,
+  limit: 3,
   loading: false,
   error: null,
 };
@@ -10,6 +13,14 @@ const initialState = {
 const slice = createSlice({
   name: 'nannies',
   initialState,
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setLimit: (state, action) => {
+      state.limit = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllNannies.pending, (state) => {
@@ -28,3 +39,4 @@ const slice = createSlice({
 });
 
 export const nanniesReducer = slice.reducer;
+export const { setPage, setLimit } = slice.actions;
